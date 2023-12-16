@@ -11,6 +11,7 @@ module.exports = merge( entry ,{
     output: {
         filename: 'bundle.[contenthash].js',
         path: path.resolve(__dirname, "public"),
+        assetModuleFilename: 'images/[name][hash:8][ext]'
     },
     module: {
         rules: [
@@ -27,10 +28,7 @@ module.exports = merge( entry ,{
             },
             {
                 test: /\.(svg|png|jpg|gif)$/,
-                use: 'file-loader',
-                generator: {
-                        filename: 'img/[name][ext]'
-                    }
+                type: 'asset/resource',
             }
         ]
     },
